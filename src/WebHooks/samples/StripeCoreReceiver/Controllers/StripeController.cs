@@ -27,7 +27,7 @@ namespace StripeCoreReceiver.Controllers
         }
 
         [StripeWebHook]
-        public IActionResult Stripe(string id, string @event, string notificationId, StripeEvent data)
+        public IActionResult Stripe(string id, string @event, string notificationId, StripeEvent stripeEvent)
         {
             if (!ModelState.IsValid)
             {
@@ -39,20 +39,20 @@ namespace StripeCoreReceiver.Controllers
                 $"{nameof(StripeController)} / '{{ReceiverId}}' received a '{{EventType}}' notification (event " +
                 "'{EventName}').",
                 id,
-                data.EventType,
+                stripeEvent.EventType,
                 @event);
 
             _logger.LogInformation(
                 1,
                 "Data created at '{Created}' and contains Notification ID '{Id}' / '{NotificationId}', Live mode " +
                 "'{DetailsLiveMode}', and Request ID '{RequestId}'.",
-                data.Created,
-                data.Id,
+                stripeEvent.Created,
+                stripeEvent.Id,
                 notificationId,
-                data.LiveMode,
-                data.Request);
+                stripeEvent.LiveMode,
+                stripeEvent.Request);
 
-            var details = data.Data.Object;
+            var details = stripeEvent.Data.Object;
             var created = DateTimeOffset.FromUnixTimeMilliseconds(
                 details.Value<long>(StripeConstants.CreatedPropertyName));
             _logger.LogInformation(
