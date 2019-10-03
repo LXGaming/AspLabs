@@ -7,7 +7,6 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
-using Microsoft.AspNetCore.Mvc.Internal; // For DefaultApplicationModelProvider
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.WebHooks.Metadata;
 using Microsoft.Extensions.Options;
@@ -583,11 +582,11 @@ namespace Microsoft.AspNetCore.WebHooks.ApplicationModels
         private static ApplicationModelProviderContext GetApplicatonModelProviderContext(Type controllerType)
         {
             var context = new ApplicationModelProviderContext(new[] { controllerType.GetTypeInfo() });
-            var defaultProvider = new DefaultApplicationModelProvider(
-                Options.Create(new MvcOptions()),
-                new EmptyModelMetadataProvider());
+            // var defaultProvider = new DefaultApplicationModelProvider(
+            //     Options.Create(new MvcOptions()),
+            //     new EmptyModelMetadataProvider());
 
-            defaultProvider.OnProvidersExecuting(context);
+            // defaultProvider.OnProvidersExecuting(context);
             return context;
         }
 
