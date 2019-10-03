@@ -133,7 +133,7 @@ namespace Microsoft.AspNetCore.WebHooks
             return request.Body != null &&
                 request.ContentLength.HasValue &&
                 request.ContentLength.Value > 0L &&
-                request.Method == HttpMethod.Post.Method;
+                HttpMethods.IsPost(request.Method);
         }
     }
 }
