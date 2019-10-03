@@ -5,8 +5,8 @@
   <PropertyGroup>
     <DeveloperBuildTestTfms Condition=" '$(DeveloperBuildTestTfms)' == '' ">netcoreapp3.0</DeveloperBuildTestTfms>
     <StandardTestTfms>$(DeveloperBuildTestTfms)</StandardTestTfms>
-
     <StandardTestTfms Condition=" '$(DeveloperBuild)' != 'true' AND '$(OS)' == 'Windows_NT' ">$(StandardTestTfms)</StandardTestTfms>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>
