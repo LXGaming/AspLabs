@@ -510,7 +510,7 @@ namespace Microsoft.AspNetCore.WebHooks.Filters
 
             return new StripeVerifySignatureFilter(
                 builder.Build(),
-                Mock.Of<IHostingEnvironment>(),
+                Mock.Of<IWebHostEnvironment>(),
                 NullLoggerFactory.Instance);
         }
 

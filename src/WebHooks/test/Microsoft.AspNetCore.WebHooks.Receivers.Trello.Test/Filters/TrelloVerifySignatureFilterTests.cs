@@ -401,7 +401,7 @@ namespace Microsoft.AspNetCore.WebHooks.Filters
 
             return new TrelloVerifySignatureFilter(
                 builder.Build(),
-                Mock.Of<IHostingEnvironment>(),
+                Mock.Of<IWebHostEnvironment>(),
                 NullLoggerFactory.Instance);
         }
 

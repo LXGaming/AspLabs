@@ -4,7 +4,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore" Version="$(MicrosoftAspNetCorePackageVersion)" />
     <ProjectReference Include="..\..\src\Microsoft.AspNetCore.WebHooks.Receivers.WordPress\Microsoft.AspNetCore.WebHooks.Receivers.WordPress.csproj" />
   </ItemGroup>
 </Project>

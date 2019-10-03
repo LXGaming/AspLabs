@@ -32,7 +32,7 @@ namespace Microsoft.AspNetCore.WebHooks.Filters
         /// The <see cref="IConfiguration"/> used to initialize <see cref="WebHookSecurityFilter.Configuration"/>.
         /// </param>
         /// <param name="hostingEnvironment">
-        /// The <see cref="IHostingEnvironment" /> used to initialize
+        /// The <see cref="IWebHostEnvironment" /> used to initialize
         /// <see cref="WebHookSecurityFilter.HostingEnvironment"/>.
         /// </param>
         /// <param name="loggerFactory">
@@ -41,7 +41,7 @@ namespace Microsoft.AspNetCore.WebHooks.Filters
         /// <param name="requestReader">The <see cref="IWebHookRequestReader"/>.</param>
         public SlackVerifyTokenFilter(
             IConfiguration configuration,
-            IHostingEnvironment hostingEnvironment,
+            IWebHostEnvironment hostingEnvironment,
             ILoggerFactory loggerFactory,
             IWebHookRequestReader requestReader)
             : base(configuration, hostingEnvironment, loggerFactory)

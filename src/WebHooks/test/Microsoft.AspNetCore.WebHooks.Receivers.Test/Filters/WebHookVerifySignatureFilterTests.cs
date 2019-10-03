@@ -251,7 +251,7 @@ namespace Microsoft.AspNetCore.WebHooks.Filters
         private class TestVerifySignatureFilter : WebHookVerifySignatureFilter
         {
             public TestVerifySignatureFilter()
-                : base(new ConfigurationBuilder().Build(), Mock.Of<IHostingEnvironment>(), NullLoggerFactory.Instance)
+                : base(new ConfigurationBuilder().Build(), Mock.Of<IWebHostEnvironment>(), NullLoggerFactory.Instance)
             {
             }
 

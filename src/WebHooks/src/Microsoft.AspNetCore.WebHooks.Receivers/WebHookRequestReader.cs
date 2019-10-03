@@ -3,6 +3,7 @@
 
 using System;
 using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -42,7 +43,7 @@ namespace Microsoft.AspNetCore.WebHooks
             // Do not store options.ValueProviderFactories because that is only the initial value of (for example)
             // ResourceExecutingContext.ValueProviderFactories.
             var options = optionsAccessor.Value;
-            _bodyModelBinder = new BodyModelBinder(options.InputFormatters, readerFactory, loggerFactory, options);
+            _bodyModelBinder = new BodyModelBinder(options.InputFormatters, readerFactory);
             _metadataProvider = metadataProvider;
         }
 
@@ -132,7 +133,7 @@ namespace Microsoft.AspNetCore.WebHooks
             return request.Body != null &&
                 request.ContentLength.HasValue &&
                 request.ContentLength.Value > 0L &&
-                HttpMethods.IsPost(request.Method);
+                request.Method == HttpMethod.Post.Method;
         }
     }
 }
